@@ -15,7 +15,7 @@ const AppNavigator = createStackNavigator(
 		Home: {
 			screen: HomeScreen,
 			navigationOptions: {
-				title: 'News'
+				title: 'Top News'
 			}
 		}
 	},
