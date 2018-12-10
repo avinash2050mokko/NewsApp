@@ -43,7 +43,7 @@ export default class NewsCard extends React.Component {
 							height: imageUrl === null ? 0 : 70,
 							marginRight: imageUrl === null ? 0 : 10
 						}}
-						source={require('../assets/icons/icons.png')}
+						source={{ uri: `${imageUrl}` }}
 					/>
 					<CategoryLabel>{title ? title : 'No Title'}</CategoryLabel>
 				</Area>
@@ -51,7 +51,6 @@ export default class NewsCard extends React.Component {
 					<Text
 						style={{
 							color: '#FF6666',
-							marginLeft: 5,
 							fontSize: 10
 						}}
 					>
