@@ -8,7 +8,7 @@ import { Ionicons } from '@expo/vector-icons'
 
 import { Image } from 'react-native'
 
-import HomeScreen from './HomeScreen'
+import HomeScreen from './screen/HomeScreen'
 
 const AppNavigator = createStackNavigator(
 	{
