@@ -2,127 +2,108 @@ import React from 'react'
 import {
 	createStackNavigator,
 	createDrawerNavigator,
-	createAppContainer
+	createAppContainer,
+	createBottomTabNavigator,
+	createMaterialTopTabNavigator
 } from 'react-navigation'
-import { Ionicons } from '@expo/vector-icons'
-
-import { Image } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
 
 import HomeScreen from './screen/HomeScreen'
 
-const AppNavigator = createStackNavigator(
+/* Tab bar goes here */
+const WorldTab = createMaterialTopTabNavigator(
 	{
-		Home: {
-			screen: HomeScreen,
-			navigationOptions: {
-				title: 'Top News'
-			}
-		}
+		Home: HomeScreen,
+		US: HomeScreen,
+		Uk: HomeScreen
 	},
 	{
-		initialRouteName: 'Home'
+		lazyLoad: true,
+		initialRouteName: 'Home',
+		tabBarOptions: {
+			scrollEnabled: true,
+			style: {
+				backgroundColor: '#2a2d36'
+			},
+			labelStyle: {
+				fontSize: 12
+			},
+
+			indicatorStyle: {
+				backgroundColor: '#a2a2a3'
+			}
+		}
 	}
 )
 
+/* Drawer Layout goes here*/
 const AppDrawer = createDrawerNavigator(
 	{
 		Home: {
-			screen: AppNavigator,
-			navigationOptions: {
-				drawerLabel: 'News'
-				/*drawerIcon: (
-					<Ionicons
-						name="md-checkmark-circle"
-						size={24}
-						color="green"
-					/>
-				)*/
-			}
+			screen: WorldTab
 		},
-		Australia: {
-			screen: AppNavigator,
-			navigationOptions: {
-				drawerLabel: 'Australia'
-			}
-		},
-		Bulgaria: {
-			screen: AppNavigator,
-			navigationOptions: {
-				drawerLabel: 'Bulgaria'
-			}
-		},
-		Canada: {
-			screen: AppNavigator,
-			navigationOptions: {
-				drawerLabel: 'Canada'
-			}
-		},
-		India: {
-			screen: AppNavigator,
-			navigationOptions: {
-				drawerLabel: 'India'
-			}
-		},
-		Malaysia: {
-			screen: AppNavigator,
-			navigationOptions: {
-				drawerLabel: 'Malaysia'
-			}
-		},
-		Nigeria: {
-			screen: AppNavigator,
-			navigationOptions: {
-				drawerLabel: 'Nigeria'
-			}
-		},
-		NewZealand: {
-			screen: AppNavigator,
-			navigationOptions: {
-				drawerLabel: 'New Zealand'
-			}
-		},
-		Philippines: {
-			screen: AppNavigator,
-			navigationOptions: {
-				drawerLabel: 'Philippines'
-			}
-		},
-		RussianFederation: {
-			screen: AppNavigator,
-			navigationOptions: {
-				drawerLabel: 'Russian Federation'
-			}
-		},
-		Singapore: {
-			screen: AppNavigator,
-			navigationOptions: {
-				drawerLabel: 'Singapore'
-			}
-		},
-		SouthAfrica: {
-			screen: AppNavigator,
-			navigationOptions: {
-				drawerLabel: 'South Africa'
-			}
-		},
-		Ukraine: {
-			screen: AppNavigator,
-			navigationOptions: {
-				drawerLabel: 'Ukraine'
-			}
-		},
-		UnitedKingdom: {
-			screen: AppNavigator,
-			navigationOptions: {
-				drawerLabel: 'United Kingdom'
-			}
+		Sources: {
+			screen: WorldTab
 		}
 	},
 	{
 		drawerPosition: 'left',
 		initialRouteName: 'Home',
-		drawerBackgroundColor: 'white'
+		drawerBackgroundColor: '#2a2d36',
+		contentOptions: {
+			activeTintColor: '#fff',
+			inactiveTintColor: '#555',
+			itemsContainerStyle: {
+				marginVertical: 0
+			},
+			iconContainerStyle: {
+				opacity: 1
+			}
+		}
 	}
 )
 
-export default createAppContainer(AppDrawer)
+// Drawer Icons
+const MenuIcon = ({ navigation }) => {
+	if (!navigation.state.isDrawerOpen) {
+		return (
+			<HeaderButton
+				icon="ios-menu"
+				onPress={() => navigation.openDrawer()}
+			/>
+		)
+	}
+}
+
+const WorldStack = createStackNavigator(
+	{
+		//important: key and screen name (i.e. DrawerNavigator) should be same while using the drawer navigator inside stack navigator.
+
+		AppDrawer: {
+			screen: AppDrawer
+		}
+	},
+	{
+		navigationOptions: ({ navigation }) => ({
+			title: 'ReactNavigation', // Title to appear in status bar
+			headerLeft: (
+				<TouchableOpacity
+					onPress={() => {
+						navigation.dispatch(DrawerActions.toggleDrawer())
+					}}
+				>
+					<Text>Menu</Text>/>
+				</TouchableOpacity>
+			),
+			headerStyle: {
+				backgroundColor: '#333'
+			},
+			headerTintColor: '#0ff',
+			headerTitleStyle: {
+				fontWeight: 'bold'
+			}
+		})
+	}
+)
+
+export default createAppContainer(WorldStack)
