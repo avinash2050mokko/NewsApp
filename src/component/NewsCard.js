@@ -7,12 +7,12 @@ import {
 	UIManager,
 	View
 } from 'react-native'
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 import moment from 'moment'
 
 const ScreenArea = styled.View`
 	align-items: center;
-	background-color: #2a2d36;
+	background-color: ${props => props.theme.colors.background};
 	border-bottom-width: 1px;
 	border-bottom-color: #44464d;
 	padding-top: 15px;
@@ -30,11 +30,16 @@ const TimeArea = styled.View`
 	align-items: center;
 `
 
-const CategoryLabel = styled.Text`
-	color: #fff;
+const Title = styled.Text`
+	color: ${props => props.theme.colors.textColor};
 	flex: 1;
 	flex-wrap: wrap;
 	font-size: 14px;
+`
+const SubTitle = styled.Text`
+	color: ${props => props.theme.colors.subTextColor};
+	margin-top: 20px;
+	font-size: 12px;
 `
 
 export default class NewsCard extends React.Component {
@@ -54,7 +59,7 @@ export default class NewsCard extends React.Component {
 	}
 
 	changeLayout = () => {
-		LayoutAnimation.configureNext(LayoutAnimation.Presets.spring)
+		LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
 
 		if (this.state.expanded === false)
 			this.setState({
@@ -82,7 +87,7 @@ export default class NewsCard extends React.Component {
 						}}
 						source={{ uri: `${imageUrl}` }}
 					/>
-					<CategoryLabel>{title ? title : 'No Title'}</CategoryLabel>
+					<Title>{title ? title : 'No Title'}</Title>
 				</Area>
 
 				{/*Expanded data */}
@@ -94,11 +99,7 @@ export default class NewsCard extends React.Component {
 					}}
 					onLayout={event => this.getViewHeight(null)}
 				>
-					<Text
-						style={{ color: '#ccc', fontSize: 12, marginTop: 20 }}
-					>
-						{description}
-					</Text>
+					<SubTitle>{description}</SubTitle>
 				</View>
 
 				<TimeArea>

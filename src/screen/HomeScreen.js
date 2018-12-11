@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, ScrollView } from 'react-native'
+import { ScrollView } from 'react-native'
 import styled from 'styled-components'
 
 import HeaderButton from '../component/HeaderButton'
@@ -9,7 +9,7 @@ import { API_KEY } from '../assets/api.data'
 const ViewArea = styled.View`
 	flex: 1;
 	padding: 16px;
-	background-color: #2a2d36;
+	background-color: ${props => props.theme.colors.background};
 `
 
 export default class HomeScreen extends Component {
@@ -38,7 +38,6 @@ export default class HomeScreen extends Component {
             .then(response => response.json())
             .then(responseJson => {
                 this.setState({ data: responseJson })
-                console.log(responseJson)
             })
             .catch(error => {
                 console.error(error)
@@ -46,7 +45,6 @@ export default class HomeScreen extends Component {
     }
 
     render() {
-        console.log(this.state.data)
         return (
             <ScrollView showsVerticalScrollIndicator={false}>
                 <ViewArea>
