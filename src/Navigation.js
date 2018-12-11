@@ -5,7 +5,6 @@ import {
 	createAppContainer
 } from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons'
-
 import { Image } from 'react-native'
 
 import HomeScreen from './screen/HomeScreen'
@@ -15,7 +14,9 @@ const AppNavigator = createStackNavigator(
 		Home: {
 			screen: HomeScreen,
 			navigationOptions: {
-				title: 'Top News'
+
+				title: 'Top News',
+				titleColor: '#fff'
 			}
 		}
 	},
@@ -30,13 +31,6 @@ const AppDrawer = createDrawerNavigator(
 			screen: AppNavigator,
 			navigationOptions: {
 				drawerLabel: 'News'
-				/*drawerIcon: (
-					<Ionicons
-						name="md-checkmark-circle"
-						size={24}
-						color="green"
-					/>
-				)*/
 			}
 		},
 		Australia: {
@@ -121,7 +115,17 @@ const AppDrawer = createDrawerNavigator(
 	{
 		drawerPosition: 'left',
 		initialRouteName: 'Home',
-		drawerBackgroundColor: 'white'
+		drawerBackgroundColor: '#2a2d36',
+		contentOptions: {
+			activeTintColor: '#fff',
+			inactiveTintColor: '#555',
+			itemsContainerStyle: {
+				marginVertical: 0
+			},
+			iconContainerStyle: {
+				opacity: 1
+			}
+		}
 	}
 )
 

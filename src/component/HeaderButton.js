@@ -6,7 +6,7 @@ export default ({ icon, library, ...rest }) => {
 	return (
 		<TouchableOpacity {...rest} style={{ justifyContent: 'center' }}>
 			<Ionicons
-				color="black"
+				color="white"
 				name={icon}
 				size={24}
 				style={{ width: 48, textAlign: 'center' }}
