@@ -34,12 +34,12 @@ const Title = styled.Text`
 	color: ${props => props.theme.colors.textColor};
 	flex: 1;
 	flex-wrap: wrap;
-	font-size: 14px;
+	font-size: 16px;
 `
 const SubTitle = styled.Text`
 	color: ${props => props.theme.colors.subTextColor};
 	margin-top: 20px;
-	font-size: 12px;
+	font-size: 14px;
 `
 
 export default class NewsCard extends React.Component {
@@ -83,7 +83,8 @@ export default class NewsCard extends React.Component {
 						style={{
 							width: imageUrl === null ? 0 : 90,
 							height: imageUrl === null ? 0 : 70,
-							marginRight: imageUrl === null ? 0 : 10
+							marginRight: imageUrl === null ? 0 : 10,
+							borderRadius: 4
 						}}
 						source={{ uri: `${imageUrl}` }}
 					/>
@@ -108,7 +109,7 @@ export default class NewsCard extends React.Component {
 							color: '#2bc5b4',
 							marginLeft: 5,
 							marginTop: 3,
-							fontSize: 10
+							fontSize: 12
 						}}
 					>
 						{moment(time).fromNow()}
