@@ -6,10 +6,12 @@ const colors = {
 	warning: '#F8A30B',
 	danger: 'red',
 
-	background: '#2a2d36',
-    secondaryColor: '#a2a2a3',
-    textColor: '#fff',
-    subTextColor: '#a2a2a3'
+	background: '#f8f8f8' /*'#2a2d36'*/,
+	secondaryColor: '#a2a2a3',
+	textColor: '#787878',
+	subTextColor: '#a2a2a3',
+
+	cardBackground: '#ffffff'
 }
 
 const borderRadius = {

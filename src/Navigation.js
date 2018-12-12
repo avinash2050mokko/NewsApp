@@ -14,8 +14,7 @@ const AppNavigator = createStackNavigator(
 		Home: {
 			screen: HomeScreen,
 			navigationOptions: {
-
-				title: 'Top News',
+				title: 'News',
 				titleColor: '#fff'
 			}
 		}
@@ -25,7 +24,7 @@ const AppNavigator = createStackNavigator(
 	}
 )
 
-const AppDrawer = createDrawerNavigator(
+/*const AppDrawer = createDrawerNavigator(
 	{
 		Home: {
 			screen: AppNavigator,
@@ -127,6 +126,6 @@ const AppDrawer = createDrawerNavigator(
 			}
 		}
 	}
-)
+)*/
 
-export default createAppContainer(AppDrawer)
+export default createAppContainer(AppNavigator)
