@@ -1,0 +1,30 @@
+                                     Version 1.0.0
+                                   ===================
+
+In version 1.0.0 ,
+ Major feature is to fetch news with good ui. User can click and read entire news. User can search any news.
+
+ Technology
+ For api , use fetch method
+
+
+
+
+                                        Version 1.0.1
+                                     ===================
+
+ In version 1.0.1
+    No ui change nor workflow
+
+    Technology
+    For api , use axios and redux to call apis
+    For storage , use Redux-persist
+
+                                      Version 1.0.1
+                                    ===================
+
+ In version 1.0.1
+    No ui change , additional provide countrywise filter options
+
+    Technology
+    No change or find some optimal solution
