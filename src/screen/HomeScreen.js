@@ -18,7 +18,7 @@ const ViewArea = styled.View`
 
 const NewsArea = styled.View`
 	flex-direction: row;
-	padding-left: 50px;
+	padding-left: 35px;
 `
 
 const ScrollView = styled.ScrollView`
@@ -162,6 +162,7 @@ export default class HomeScreen extends Component {
 										key={index}
 										title={data.title}
 										imageUrl={data.urlToImage}
+										url={data.url}
 									/>
 								))}
 						</NewsArea>
@@ -187,6 +188,7 @@ export default class HomeScreen extends Component {
 										key={index}
 										title={data.title}
 										imageUrl={data.urlToImage}
+										url={data.url}
 									/>
 								))}
 						</NewsArea>
@@ -212,6 +214,7 @@ export default class HomeScreen extends Component {
 										key={index}
 										title={data.title}
 										imageUrl={data.urlToImage}
+										url={data.url}
 									/>
 								))}
 						</NewsArea>
@@ -237,6 +240,7 @@ export default class HomeScreen extends Component {
 										key={index}
 										title={data.title}
 										imageUrl={data.urlToImage}
+										url={data.url}
 									/>
 								))}
 						</NewsArea>
@@ -262,6 +266,7 @@ export default class HomeScreen extends Component {
 										key={index}
 										title={data.title}
 										imageUrl={data.urlToImage}
+										url={data.url}
 									/>
 								))}
 						</NewsArea>
@@ -287,6 +292,7 @@ export default class HomeScreen extends Component {
 										key={index}
 										title={data.title}
 										imageUrl={data.urlToImage}
+										url={data.url}
 									/>
 								))}
 						</NewsArea>
