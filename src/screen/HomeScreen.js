@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
-import { Image, View } from 'react-native'
+import { StatusBar } from 'react-native'
 import styled from 'styled-components'
-import { Ionicons, Entypo, FontAwesome , MaterialIcons} from '@expo/vector-icons'
+import {
+	Ionicons,
+	Entypo,
+	FontAwesome,
+	MaterialIcons
+} from '@expo/vector-icons'
 
 import NewsCardUI from '../component/NewsCardUI'
 import { API_KEY } from '../assets/api.data'
@@ -58,7 +63,7 @@ export default class HomeScreen extends Component {
 		)
 			.then(response => response.json())
 			.then(responseJson => {
-				this.setState({ topNews: responseJson })
+				this.setState({ topNews: responseJson.articles.slice(0, 5) })
 			})
 			.catch(error => {
 				console.error(error)
@@ -70,7 +75,7 @@ export default class HomeScreen extends Component {
 		)
 			.then(response => response.json())
 			.then(responseJson => {
-				this.setState({ business: responseJson })
+				this.setState({ business: responseJson.articles.slice(0, 5) })
 			})
 			.catch(error => {
 				console.error(error)
@@ -82,7 +87,9 @@ export default class HomeScreen extends Component {
 		)
 			.then(response => response.json())
 			.then(responseJson => {
-				this.setState({ entertainment: responseJson })
+				this.setState({
+					entertainment: responseJson.articles.slice(0, 5)
+				})
 			})
 			.catch(error => {
 				console.error(error)
@@ -94,7 +101,7 @@ export default class HomeScreen extends Component {
 		)
 			.then(response => response.json())
 			.then(responseJson => {
-				this.setState({ health: responseJson })
+				this.setState({ health: responseJson.articles.slice(0, 5) })
 			})
 			.catch(error => {
 				console.error(error)
@@ -106,7 +113,7 @@ export default class HomeScreen extends Component {
 		)
 			.then(response => response.json())
 			.then(responseJson => {
-				this.setState({ sports: responseJson })
+				this.setState({ sports: responseJson.articles.slice(0, 5) })
 			})
 			.catch(error => {
 				console.error(error)
@@ -118,7 +125,7 @@ export default class HomeScreen extends Component {
 		)
 			.then(response => response.json())
 			.then(responseJson => {
-				this.setState({ technology: responseJson })
+				this.setState({ technology: responseJson.articles.slice(0, 5) })
 			})
 			.catch(error => {
 				console.error(error)
@@ -129,6 +136,12 @@ export default class HomeScreen extends Component {
 		return (
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<ViewArea>
+					<StatusBar
+						barStyle="light-content"
+						hidden={false}
+						translucent={true}
+					/>
+
 					{/* Top News */}
 					<CategoryBar>
 						<FontAwesome
@@ -144,15 +157,13 @@ export default class HomeScreen extends Component {
 					>
 						<NewsArea>
 							{this.state.topNews !== undefined &&
-								this.state.topNews.articles.map(
-									(data, index) => (
-										<NewsCardUI
-											key={index}
-											title={data.title}
-											imageUrl={data.urlToImage}
-										/>
-									)
-								)}
+								this.state.topNews.map((data, index) => (
+									<NewsCardUI
+										key={index}
+										title={data.title}
+										imageUrl={data.urlToImage}
+									/>
+								))}
 						</NewsArea>
 					</ScrollView>
 
@@ -171,15 +182,13 @@ export default class HomeScreen extends Component {
 					>
 						<NewsArea>
 							{this.state.business !== undefined &&
-								this.state.business.articles.map(
-									(data, index) => (
-										<NewsCardUI
-											key={index}
-											title={data.title}
-											imageUrl={data.urlToImage}
-										/>
-									)
-								)}
+								this.state.business.map((data, index) => (
+									<NewsCardUI
+										key={index}
+										title={data.title}
+										imageUrl={data.urlToImage}
+									/>
+								))}
 						</NewsArea>
 					</ScrollView>
 
@@ -198,15 +207,13 @@ export default class HomeScreen extends Component {
 					>
 						<NewsArea>
 							{this.state.entertainment !== undefined &&
-								this.state.entertainment.articles.map(
-									(data, index) => (
-										<NewsCardUI
-											key={index}
-											title={data.title}
-											imageUrl={data.urlToImage}
-										/>
-									)
-								)}
+								this.state.entertainment.map((data, index) => (
+									<NewsCardUI
+										key={index}
+										title={data.title}
+										imageUrl={data.urlToImage}
+									/>
+								))}
 						</NewsArea>
 					</ScrollView>
 
@@ -225,15 +232,13 @@ export default class HomeScreen extends Component {
 					>
 						<NewsArea>
 							{this.state.health !== undefined &&
-								this.state.health.articles.map(
-									(data, index) => (
-										<NewsCardUI
-											key={index}
-											title={data.title}
-											imageUrl={data.urlToImage}
-										/>
-									)
-								)}
+								this.state.health.map((data, index) => (
+									<NewsCardUI
+										key={index}
+										title={data.title}
+										imageUrl={data.urlToImage}
+									/>
+								))}
 						</NewsArea>
 					</ScrollView>
 
@@ -252,15 +257,13 @@ export default class HomeScreen extends Component {
 					>
 						<NewsArea>
 							{this.state.sports !== undefined &&
-								this.state.sports.articles.map(
-									(data, index) => (
-										<NewsCardUI
-											key={index}
-											title={data.title}
-											imageUrl={data.urlToImage}
-										/>
-									)
-								)}
+								this.state.sports.map((data, index) => (
+									<NewsCardUI
+										key={index}
+										title={data.title}
+										imageUrl={data.urlToImage}
+									/>
+								))}
 						</NewsArea>
 					</ScrollView>
 
@@ -279,15 +282,13 @@ export default class HomeScreen extends Component {
 					>
 						<NewsArea>
 							{this.state.technology !== undefined &&
-								this.state.technology.articles.map(
-									(data, index) => (
-										<NewsCardUI
-											key={index}
-											title={data.title}
-											imageUrl={data.urlToImage}
-										/>
-									)
-								)}
+								this.state.technology.map((data, index) => (
+									<NewsCardUI
+										key={index}
+										title={data.title}
+										imageUrl={data.urlToImage}
+									/>
+								))}
 						</NewsArea>
 					</ScrollView>
 				</ViewArea>
